@@ -166,3 +166,22 @@
 	}
 
 })(jQuery);
+// Search bar
+	// Server-side code
+app.get('/search', function(req, res) {
+	var query = req.query.q;
+	var sql = "SELECT * FROM products WHERE name LIKE '%" + query + "%'";
+	connection.query(sql, function(err, results) {
+	  if (err) throw err;
+	  res.render('search-results', { results: results });
+	});
+  });
+  
+  	// Client-side code (using jQuery)
+  $(document).ready(function() {
+	$('#search-btn').click(function() {
+	  var query = $('#search-input').val();
+	  window.location.href = '/search?q=' + query;
+	});
+  });
+  // Search bar/
