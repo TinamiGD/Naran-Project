@@ -10,6 +10,7 @@ body {
 
 .profile-tab-nav {
   min-width: 30%;
+  height: 100vh;
 }
 
 .tab-content {
